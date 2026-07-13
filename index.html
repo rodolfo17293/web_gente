@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script>window.Motion = window.FramerMotion;</script>
+  <style>
+    body { margin: 0; background: #030302; font-family: 'Barlow', sans-serif; }
+    ::selection { background: #FF7A45; color: #030302; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+  </style>
+</helmet>
+
+<div style="background:#030302; color:#fff; overflow-x:hidden; position:relative; width:100%;">
+
+  {{ scrollProgressBar }}
+
+  <!-- NAVBAR -->
+  <nav style="position:fixed; top:16px; left:0; right:0; z-index:50; display:flex; justify-content:space-between; align-items:center; padding:0 32px;">
+    <div class="liquid-glass" style="width:48px; height:48px; border-radius:9999px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; font-size:22px; color:#fff; text-transform:lowercase;">g</span>
+    </div>
+    <div class="liquid-glass" style="display:flex; align-items:center; gap:8px; border-radius:9999px; padding:6px 8px 6px 24px;">
+      <a href="#" style="font-size:14px; color:rgba(255,255,255,0.9); text-decoration:none; margin-right:24px;">Inicio</a>
+      <a href="#servicios" style="font-size:14px; color:rgba(255,255,255,0.9); text-decoration:none; margin-right:24px;">Servicios</a>
+      <a href="#proceso" style="font-size:14px; color:rgba(255,255,255,0.9); text-decoration:none; margin-right:24px;">Proceso</a>
+      <a href="#cta" style="font-size:14px; color:rgba(255,255,255,0.9); text-decoration:none; margin-right:8px;">Nosotros</a>
+      <a href="#cta" style="display:flex; align-items:center; gap:4px; background:#FF7A45; color:#030302; border-radius:9999px; padding:10px 18px; font-size:14px; font-weight:500; text-decoration:none; white-space:nowrap;">
+        Hablemos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+      </a>
+    </div>
+    <div style="width:48px; height:48px; flex-shrink:0;"></div>
+  </nav>
+
+  <!-- SECTION 1: HERO -->
+  <section data-screen-label="Hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; overflow:hidden;">
+    {{ heroVideo }}
+
+    <div style="position:relative; z-index:10; display:flex; flex-direction:column; align-items:center; padding-top:96px; padding-left:16px; padding-right:16px; width:100%;">
+
+      {{ heroBadge }}
+
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; row-gap:0.1em; max-width:760px; margin-top:28px;">
+        {{ headlineWords }}
+      </div>
+
+      {{ heroSubhead }}
+
+      {{ heroCtas }}
+
+      {{ heroStats }}
+
+    </div>
+
+    {{ heroBottomStrip }}
+  </section>
+
+  <!-- SECTION 2: TRUST -->
+  <section style="padding:64px 24px; background:#030302; border-top:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
+    <div class="liquid-glass" style="display:flex; align-items:center; gap:10px; border-radius:9999px; padding:12px 20px;">
+      <span style="width:6px; height:6px; border-radius:9999px; background:#FF7A45; flex-shrink:0;"></span>
+      <span style="font-size:14px; color:rgba(255,255,255,0.9);">5 sistemas de IA activos</span>
+    </div>
+    <div class="liquid-glass" style="display:flex; align-items:center; gap:10px; border-radius:9999px; padding:12px 20px;">
+      <span style="width:6px; height:6px; border-radius:9999px; background:#FF7A45; flex-shrink:0;"></span>
+      <span style="font-size:14px; color:rgba(255,255,255,0.9);">12 automatizaciones en producción</span>
+    </div>
+    <div class="liquid-glass" style="display:flex; align-items:center; gap:10px; border-radius:9999px; padding:12px 20px;">
+      <span style="width:6px; height:6px; border-radius:9999px; background:#FF7A45; flex-shrink:0;"></span>
+      <span style="font-size:14px; color:rgba(255,255,255,0.9);">100% construido a medida — cero templates</span>
+    </div>
+  </section>
+
+  <!-- SECTION 3: GALERÍA -->
+  <section style="padding:96px 32px;">
+    <div style="font-size:14px; color:rgba(255,255,255,0.7); margin-bottom:16px;">// Cómo pensamos</div>
+    <h2 style="font-family:'Instrument Serif', serif; font-style:italic; color:#fff; font-size:56px; letter-spacing:-2px; margin:0 0 64px 0; line-height:1;">Sistemas, no solo software</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;">
+      {{ galleryCards }}
+    </div>
+  </section>
+
+  <!-- SECTION 4: BENEFICIOS -->
+  <section id="servicios" style="padding:96px 32px; background:#030302;">
+    <div style="font-size:14px; color:rgba(255,255,255,0.7); margin-bottom:16px;">// Servicios</div>
+    <h2 style="font-family:'Instrument Serif', serif; font-style:italic; color:#fff; font-size:56px; letter-spacing:-2px; margin:0; line-height:1;">Cinco formas de quitarte trabajo de encima</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; margin-top:64px;">
+      {{ beneficioCards }}
+    </div>
+
+    <div id="proceso" style="display:flex; flex-direction:column; gap:32px; margin-top:64px; position:relative;">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:32px; position:relative;">
+        {{ processSteps }}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CTA -->
+  <section id="cta" style="padding:96px 32px; text-align:center; background:#030302; border-top:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1);">
+    <h2 style="font-family:'Instrument Serif', serif; font-style:italic; color:#fff; font-size:56px; margin:0 0 20px 0; line-height:1;">¿Empezamos?</h2>
+    <p style="font-family:'Barlow', sans-serif; font-weight:300; color:rgba(255,255,255,0.8); max-width:480px; margin:0 auto 40px auto; font-size:16px;">Cuéntanos qué te está quitando tiempo. En 24 horas te decimos si tiene sentido automatizarlo.</p>
+    {{ ctaButton }}
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding:32px; border-top:1px solid rgba(255,255,255,0.1); display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;">
+    <div style="font-family:'Instrument Serif', serif; font-style:italic; color:#fff; font-size:18px;">gente</div>
+    <div style="font-family:'Barlow', sans-serif; font-weight:300; font-size:12px; color:rgba(255,255,255,0.6);">Sistemas inteligentes para negocios que no quieren quedarse atrás. © 2026</div>
+  </footer>
+
+  <style>
+    .liquid-glass {
+      background: rgba(255,255,255,0.01);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: none;
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .liquid-glass::before {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+        rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+        rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .liquid-glass-strong {
+      backdrop-filter: blur(50px);
+      -webkit-backdrop-filter: blur(50px);
+      box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
+    }
+    .liquid-glass-strong::before {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 20%,
+        rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+        rgba(255,255,255,0.2) 80%, rgba(255,255,255,0.5) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  </style>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;serviciosEstilo&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Glass&quot;, &quot;Editorial&quot;], &quot;default&quot;: &quot;Glass&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Servicios&quot;}}">
+function useMotionLib() {
+  const [lib, setLib] = React.useState(() => window.Motion || null);
+  React.useEffect(() => {
+    if (lib) return;
+    let raf;
+    const check = () => {
+      if (window.Motion) { setLib(window.Motion); return; }
+      raf = requestAnimationFrame(check);
+    };
+    check();
+    return () => raf && cancelAnimationFrame(raf);
+  }, [lib]);
+  return lib;
+}
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = React.useState(() => {
+    try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; }
+  });
+  React.useEffect(() => {
+    let mq;
+    try { mq = window.matchMedia('(prefers-reduced-motion: reduce)'); } catch (e) { return; }
+    const handler = () => setReduced(mq.matches);
+    mq.addEventListener ? mq.addEventListener('change', handler) : mq.addListener(handler);
+    return () => { mq.removeEventListener ? mq.removeEventListener('change', handler) : mq.removeListener(handler); };
+  }, []);
+  return reduced;
+}
+
+function ScrollProgressBarActive({ Motion }) {
+  const { motion, useScroll, useSpring } = Motion;
+  const { scrollYProgress } = useScroll();
+  const smoothed = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
+
+  return React.createElement(motion.div, {
+    style: {
+      position: 'fixed', top: 0, left: 0, height: '2px', zIndex: 60,
+      transformOrigin: 'left', background: '#FF7A45',
+      width: '100%', scaleX: smoothed,
+    },
+  });
+}
+
+function ScrollProgressBar() {
+  const reduced = usePrefersReducedMotion();
+  const Motion = useMotionLib();
+  if (reduced || !Motion || !Motion.motion || !Motion.useScroll || !Motion.useSpring) return null;
+  return React.createElement(ScrollProgressBarActive, { key: 'active', Motion });
+}
+
+function HeroVideoScalerActive({ Motion, children }) {
+  const { motion, useScroll, useTransform } = Motion;
+  const containerRef = React.useRef(null);
+  const wrapStyle = { position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 };
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] });
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const borderRadius = useTransform(scrollYProgress, [0, 1], ['0px', '32px']);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+
+  return React.createElement('div', { ref: containerRef, style: wrapStyle },
+    React.createElement(motion.div, {
+      style: { scale, borderRadius, opacity, width: '100%', height: '100%', overflow: 'hidden', transformOrigin: 'center top' },
+    }, children)
+  );
+}
+
+function HeroVideoScaler({ children }) {
+  const reduced = usePrefersReducedMotion();
+  const Motion = useMotionLib();
+  const wrapStyle = { position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 };
+
+  if (reduced || !Motion || !Motion.motion || !Motion.useScroll || !Motion.useTransform) {
+    return React.createElement('div', { style: wrapStyle }, children);
+  }
+  return React.createElement(HeroVideoScalerActive, { key: 'active', Motion }, children);
+}
+
+const ICONS = {
+  ArrowUpRight: (props) => React.createElement('svg', { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    React.createElement('path', { d: 'M7 17L17 7' }),
+    React.createElement('path', { d: 'M7 7h10v10' })
+  ),
+  ArrowRight: (props) => React.createElement('svg', { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    React.createElement('path', { d: 'M5 12h14' }),
+    React.createElement('path', { d: 'M12 5l7 7-7 7' })
+  ),
+  Cpu: (props) => React.createElement('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    React.createElement('rect', { x: 4, y: 4, width: 16, height: 16, rx: 2 }),
+    React.createElement('rect', { x: 9, y: 9, width: 6, height: 6 }),
+    React.createElement('path', { d: 'M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3' })
+  ),
+  Code2: (props) => React.createElement('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    React.createElement('path', { d: 'M10 4L4 12l6 8' }),
+    React.createElement('path', { d: 'M14 4l6 8-6 8' })
+  ),
+  Workflow: (props) => React.createElement('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    React.createElement('rect', { x: 3, y: 3, width: 8, height: 8, rx: 2 }),
+    React.createElement('path', { d: 'M7 11v3a2 2 0 002 2h6' }),
+    React.createElement('rect', { x: 13, y: 13, width: 8, height: 8, rx: 2 })
+  ),
+  MessageCircle: (props) => React.createElement('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    React.createElement('path', { d: 'M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z' })
+  ),
+  Compass: (props) => React.createElement('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    React.createElement('circle', { cx: 12, cy: 12, r: 10 }),
+    React.createElement('polygon', { points: '16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76' })
+  ),
+};
+
+function FadingVideo({ src, className, style }) {
+  const videoRef = React.useRef(null);
+  const rafRef = React.useRef(null);
+  const fadingOutRef = React.useRef(false);
+  const FADE_MS = 500;
+  const FADE_OUT_LEAD = 0.55;
+
+  const fadeTo = React.useCallback((target, duration) => {
+    const el = videoRef.current;
+    if (!el) return;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    const start = parseFloat(el.style.opacity) || 0;
+    const startTime = performance.now();
+    function step(now) {
+      const t = Math.min(1, (now - startTime) / duration);
+      const val = start + (target - start) * t;
+      if (videoRef.current) videoRef.current.style.opacity = String(val);
+      if (t < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      }
+    }
+    rafRef.current = requestAnimationFrame(step);
+  }, []);
+
+  React.useEffect(() => {
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, []);
+
+  const onLoadedData = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.style.opacity = '0';
+    el.play().catch(() => {});
+    fadeTo(1, FADE_MS);
+  };
+
+  const onTimeUpdate = () => {
+    // No fade-out — video stays visible and freezes on its last frame.
+  };
+
+  const onEnded = () => {
+    // Freeze on last frame — no restart/loop.
+  };
+
+  return React.createElement('video', {
+    ref: videoRef,
+    src,
+    autoPlay: true,
+    muted: true,
+    playsInline: true,
+    preload: 'auto',
+    className,
+    style: { opacity: 0, ...style },
+    onLoadedData,
+    onTimeUpdate,
+    onEnded,
+  });
+}
+
+function BlurWordStatic({ word, color }) {
+  const ref = React.useRef(null);
+  return React.createElement('span', { ref, style: { display: 'inline-block', marginRight: '0.28em', color } }, word);
+}
+
+function BlurWordActive({ word, i, color, motion }) {
+  const ref = React.useRef(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) setVisible(true); });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return React.createElement(motion.span, {
+    ref,
+    initial: { filter: 'blur(10px)', opacity: 0, y: 50 },
+    animate: visible ? { filter: ['blur(10px)', 'blur(5px)', 'blur(0px)'], opacity: [0, 0.5, 1], y: [50, -5, 0] } : {},
+    transition: { duration: 0.7, times: [0, 0.5, 1], ease: 'easeOut', delay: i * 0.1 },
+    style: { display: 'inline-block', marginRight: '0.28em', color },
+  }, word);
+}
+
+function BlurWord({ word, i, color }) {
+  const Motion = useMotionLib();
+  const motion = Motion && Motion.motion;
+  if (!motion) return React.createElement(BlurWordStatic, { word, color });
+  return React.createElement(BlurWordActive, { key: 'active', word, i, color, motion });
+}
+
+function FadeInActive({ children, delay, style, motion }) {
+  return React.createElement(motion.div, {
+    initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
+    animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
+    transition: { duration: 0.7, ease: 'easeOut', delay },
+    style,
+  }, children);
+}
+
+function FadeIn({ children, delay, style }) {
+  const Motion = useMotionLib();
+  const motion = Motion && Motion.motion;
+  if (!motion) return React.createElement('div', { style }, children);
+  return React.createElement(FadeInActive, { key: 'active', delay, style, motion }, children);
+}
+
+function ScrollFadeInStatic({ children, style }) {
+  const ref = React.useRef(null);
+  return React.createElement('div', { ref, style }, children);
+}
+
+function ScrollFadeInActive({ children, style, motion }) {
+  const ref = React.useRef(null);
+  const [visible, setVisible] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) setVisible(true); });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return React.createElement(motion.div, {
+    ref,
+    initial: { opacity: 0, y: 24 },
+    animate: visible ? { opacity: 1, y: 0 } : {},
+    transition: { duration: 0.6, ease: 'easeOut' },
+    style,
+  }, children);
+}
+
+function ScrollFadeIn({ children, style }) {
+  const Motion = useMotionLib();
+  const motion = Motion && Motion.motion;
+  if (!motion) return React.createElement(ScrollFadeInStatic, { style }, children);
+  return React.createElement(ScrollFadeInActive, { key: 'active', style, motion }, children);
+}
+
+const GALLERY = [
+  { img: 'https://d8j0ntlcm91z4.cloudfront.net/user_3EsEl3qJ3ZKxReLoGNp3Ln0RKSf/hf_20260713_212613_9168b20a-9045-4d50-847f-cdb20cff5e4a.png', title: 'Arquitectura', desc: 'La base técnica antes que la interfaz.' },
+  { img: 'https://d8j0ntlcm91z4.cloudfront.net/user_3EsEl3qJ3ZKxReLoGNp3Ln0RKSf/hf_20260713_212620_eb4b56a6-bfbc-49c9-b95d-d3fec72a7c09.png', title: 'Automatización', desc: 'Flujos que corren solos, todos los días.' },
+  { img: 'https://d8j0ntlcm91z4.cloudfront.net/user_3EsEl3qJ3ZKxReLoGNp3Ln0RKSf/hf_20260713_212622_57b7c93e-a42e-440a-a422-7f15f355ece2.png', title: 'Inteligencia conectada', desc: 'Cada sistema habla con los demás.' },
+];
+
+const BENEFICIOS = [
+  { icon: 'Cpu', title: 'Sistemas de IA', desc: 'Integramos LLMs a tus procesos: análisis de datos, asistentes internos, respuestas con criterio.' },
+  { icon: 'Code2', title: 'Desarrollo web', desc: 'Landing pages, sitios corporativos y plataformas a medida, rápidas y fáciles de mantener.' },
+  { icon: 'Workflow', title: 'Automatizaciones', desc: 'Conectamos tus herramientas: reportes, CRM y flujos que hoy hace una persona a mano.' },
+  { icon: 'MessageCircle', title: 'Agentes conversacionales', desc: 'Chatbots que califican leads y responden 24/7 sin sonar a robot.' },
+  { icon: 'Compass', title: 'Consultoría en IA', desc: 'Auditamos tus procesos y te dejamos un roadmap concreto, sin humo.' },
+];
+
+const PROCESS = [
+  { n: '01', title: 'Descubrir', desc: 'entendemos tu negocio y tus cuellos de botella' },
+  { n: '02', title: 'Diseñar', desc: 'proponemos la solución más simple, no la más impresionante' },
+  { n: '03', title: 'Desplegar', desc: 'construimos, probamos y dejamos corriendo con soporte' },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const headline = 'La IA hace el trabajo. La gente toma las decisiones.';
+    const words = headline.split(' ');
+
+    const headlineWords = React.createElement('p', {
+      style: {
+        fontFamily: "'Instrument Serif', serif",
+        fontStyle: 'italic',
+        color: '#fff',
+        fontSize: 'clamp(40px, 8vw, 88px)',
+        lineHeight: 0.85,
+        letterSpacing: '-3px',
+        textAlign: 'center',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        rowGap: '0.1em',
+        margin: 0,
+      },
+    }, words.map((w, i) => {
+      const clean = w.replace(/[.,]/g, '');
+      const isEmber = clean.toLowerCase() === 'gente';
+      return React.createElement(BlurWord, { key: i, word: w, i, color: isEmber ? '#FF7A45' : '#fff' });
+    }));
+
+    const heroVideoStyled = React.createElement(HeroVideoScaler, null,
+      React.createElement(FadingVideo, {
+        src: 'uploads/video-web-agencia-laptop.mp4',
+        style: { width: '100%', height: '100%', objectFit: 'cover' },
+      })
+    );
+
+    const scrollProgressBar = React.createElement(ScrollProgressBar);
+
+    const heroBadge = null;
+
+    const heroSubhead = React.createElement(FadeIn, { delay: 0.8, style: { marginTop: '16px', maxWidth: '620px', textAlign: 'center' } },
+      React.createElement('p', { style: { fontFamily: "'Barlow', sans-serif", fontWeight: 300, fontSize: '16px', color: 'rgba(255,255,255,0.9)', margin: 0 } },
+        'Diseñamos e implementamos sistemas de IA, automatizaciones y productos web que le quitan trabajo operativo a tu negocio — no que se lo suman.'
+      )
+    );
+
+    const heroCtas = React.createElement(FadeIn, { delay: 1.1, style: { display: 'flex', gap: '24px', marginTop: '24px', flexWrap: 'wrap', justifyContent: 'center' } },
+      React.createElement('a', { href: '#cta', className: 'liquid-glass-strong', style: { display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(255,122,69,0.9)', color: '#000', borderRadius: '9999px', padding: '10px 20px', fontSize: '14px', fontWeight: 500, textDecoration: 'none' } },
+        'Iniciar un proyecto', React.createElement(ICONS.ArrowUpRight, null)
+      ),
+      React.createElement('a', { href: '#servicios', style: { display: 'flex', alignItems: 'center', gap: '6px', color: '#fff', fontSize: '14px', textDecoration: 'none', alignSelf: 'center' } },
+        'Ver servicios', React.createElement(ICONS.ArrowRight, null)
+      )
+    );
+
+    const heroStats = null;
+    const heroBottomStrip = null;
+
+    const galleryCards = GALLERY.map((g, i) => React.createElement(ScrollFadeIn, { key: i, style: {} },
+      React.createElement('div', { className: 'liquid-glass', style: { borderRadius: '1.25rem', overflow: 'hidden' } },
+        React.createElement('div', { style: { overflow: 'hidden', height: '420px' } },
+          React.createElement('img', { src: g.img, alt: g.title, style: { width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }, onMouseEnter: (e) => e.currentTarget.style.transform = 'scale(1.03)', onMouseLeave: (e) => e.currentTarget.style.transform = 'scale(1)' })
+        ),
+        React.createElement('div', { style: { padding: '20px' } },
+          React.createElement('div', { style: { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: '24px', color: '#fff' } }, g.title),
+          React.createElement('div', { style: { fontFamily: "'Barlow', sans-serif", fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginTop: '6px' } }, g.desc)
+        )
+      )
+    ));
+
+    const serviciosEstilo = this.props.serviciosEstilo ?? 'Glass';
+
+    const beneficioCards = BENEFICIOS.map((b, i) => {
+      const Icon = ICONS[b.icon];
+
+      if (serviciosEstilo === 'Editorial') {
+        return React.createElement(ScrollFadeIn, { key: i, style: {} },
+          React.createElement('div', { style: { borderTop: '1px solid rgba(255,255,255,0.85)', paddingTop: '20px', minHeight: '180px', display: 'flex', flexDirection: 'column' } },
+            React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' } },
+              React.createElement('span', { style: { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: '15px', color: '#FF7A45' } }, String(i + 1).padStart(2, '0')),
+              React.createElement(Icon, { style: { color: 'rgba(255,255,255,0.6)' } })
+            ),
+            React.createElement('div', { style: { marginTop: 'auto', paddingTop: '32px' } },
+              React.createElement('div', { style: { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: '30px', color: '#fff' } }, b.title),
+              React.createElement('div', { style: { fontFamily: "'Barlow', sans-serif", fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.75)', marginTop: '10px', maxWidth: '32ch' } }, b.desc)
+            )
+          )
+        );
+      }
+
+      return React.createElement(ScrollFadeIn, { key: i, style: {} },
+        React.createElement('div', {
+          className: 'liquid-glass',
+          style: { borderRadius: '1.25rem', padding: '32px', minHeight: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', transition: 'background 0.3s ease' },
+        },
+          React.createElement(Icon, { style: { color: '#FF7A45', width: '28px', height: '28px' } }),
+          React.createElement('div', { style: { marginTop: '28px' } },
+            React.createElement('div', { style: { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: '28px', color: '#fff' } }, b.title),
+            React.createElement('div', { style: { fontFamily: "'Barlow', sans-serif", fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.8)', marginTop: '10px', maxWidth: '32ch' } }, b.desc)
+          )
+        )
+      );
+    });
+
+    const processSteps = PROCESS.map((p, i) => React.createElement('div', { key: i, style: { flex: '1 1 220px', position: 'relative', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)' } },
+      React.createElement('div', { style: { fontFamily: "'Barlow', sans-serif", color: '#FF7A45', fontSize: '13px', fontWeight: 500, marginBottom: '8px' } }, p.n),
+      React.createElement('div', { style: { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: '24px', color: '#fff' } }, p.title),
+      React.createElement('div', { style: { fontFamily: "'Barlow', sans-serif", fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginTop: '8px' } }, p.desc)
+    ));
+
+    const ctaButton = React.createElement('a', {
+      href: '#',
+      className: 'liquid-glass-strong',
+      style: { display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#FF7A45', color: '#000', borderRadius: '9999px', padding: '14px 28px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'transform 0.2s ease' },
+      onMouseEnter: (e) => e.currentTarget.style.transform = 'scale(1.02)',
+      onMouseLeave: (e) => e.currentTarget.style.transform = 'scale(1)',
+    }, 'Escribir por WhatsApp', React.createElement(ICONS.ArrowUpRight, null));
+
+    return {
+      headlineWords,
+      heroVideo: heroVideoStyled,
+      heroBadge,
+      heroSubhead,
+      heroCtas,
+      heroStats,
+      heroBottomStrip,
+      galleryCards,
+      beneficioCards,
+      processSteps,
+      ctaButton,
+      scrollProgressBar,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
